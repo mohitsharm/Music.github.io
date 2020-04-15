@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0">
+	<title>music player</title>
+	<link rel="shortcut icon" href="src/imgs/color-icon.ico">
+	<link rel="stylesheet" type="text/css" href="src/css/index.css">
+</head>
+<body>
+	<!--Head navigation bar-->
+	<header>
+		<div class="header-wrap clrfix">
+			<nav class="clrfix">
+				<div class="logo"></div>
+				<ul class="clrfix">
+					<li class="active"><a href="javascript:;" data-icon='0'>Home</a></li>
+					<li><a href="javascript:;" data-icon='1'>Discover music</a></li>
+					<li><a href="javascript:;" data-icon='2'>playlist</a></li>
+					<li><a href="javascript:;" data-icon='3'>my collection</a></li>
+				</ul>
+			</nav>
+			<a href="javascript:0;" class="login-btn r" id="js-login">log in</a>
+			<a href="javascript:0;" class="logout-btn r" id="logout">,drop out</a>
+			<span class="user-show r" id="user"></span>
+			
+			<div class="search-box">
+				<input type="text" class="search">
+				<!-- <label for="">song/</label> -->
+			</div>
+
+		</div>
+	</header>
+	<!-- Head navigation bar end -->
+
+	<!-- Main panel -->
+	<div class="main-box">
+		<!-- Home -->
+		<section class="panel index clrfix" id="index" data-icon="0">
+			<div class="modal-backdrop modal-backdrops"></div>
+			<div class="turning_box">
+				<div class="recomment_turning clrfix">
+					<a href="javascript:;" class="banner-slide top1">
+						<img src="src/imgs/turning1.png">
+					</a>
+					<a href="javascript:;" class="banner-slide top2">
+						<img src="src/imgs/turning2.png">
+					</a>
+					<a href="javascript:;" class="banner-slide top3">
+						<img src="src/imgs/turning3.png">
+					</a>
+					<a href="javascript:;" class="banner-slide top4">
+						<img src="src/imgs/turning4.png">
+					</a>
+				</div>
+				<div class="banner-dots"></div>
+				<!-- <a href="javascript:;" class="banner-anchor prev"> Previous </a>
+				<a href="javascript:;" class="banner-anchor next"> Next </a> -->
+  			</div>
+			<div class="music_recomment">
+				<h2>Recommended playlist</h2>
+				<div class="music_list clrfix">
+				</div>
+			</div>
+			
+		</section>
+		<!-- Home end -->
+
+
+		<!-- Discover music -->
+		<section class="panel music_list clrfix" id="music_list" data-icon="1">
+		</section>
+		<!-- Discover music end -->
+
+		<!-- my music -->
+		<section class="panel my_music color" id="my_music" data-icon="2">
+			<div class="u_title clrfix">
+				<h3 class='l'>playlist</h3>
+				<span class="sub l">
+					<span id="flag_trackCount">0</span>
+					Song
+				</span>
+				<!-- <span class="r" >play all</span> -->
+			</div>
+			<div class="no-login">
+				<h4>Ah, there is no music yet! Go add music~</h4>
+				<img src="src/imgs/noLogin.gif" class="no-login-img"/>
+			</div>
+			
+			<div class="u_title_list">
+				<table class="m_table" id="playList" cellpadding="0" cellspacing="0">
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="list-pre" page-id="1" title="Previous"> < </div>
+			<div class="list-nxt" page-id="2" title="Next page"> > </div>
+		</section>
+		<!-- my music end -->
+
+		<!-- my collection -->
+		<section class="panel my_collect" id="my_collect" data-icon="3">
+			<div class="u_title clrfix">
+				<h3 class='l'>my collection</h3>
+				<span class="sub l">
+					<span id="flag_trackCount">0</span>
+					Song
+				</span>
+			</div>
+			<div class="no-login">
+				<h4>Ah, there is no music yet! Go add music~</h4>
+				<img src="src/imgs/noLogin.gif" class="no-login-img"/>
+			</div>
+			<div class="u_title_list">
+				<table class="m_table" cellpadding="0" cellspacing="0">
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<div class="list-pre" page-id="1" title="Previous"> < </div>
+			<div class="list-nxt" page-id="2" title="Next page"> > </div>
+		</section>
+		<!-- my collection end -->
+
+
+	</div>
+
+
+
+	<!-- Bottom play panel -->
+	<div class="play-banner">
+		<a href="javascript:;" hidefocus="true" data-action="play" class="play" title="play / Pause(p)"></a>
+		<div class="progress-bar">
+			<div class="rdy" style="width:0%;"></div>
+			<div class="cur" style="width:0%;">
+				<span class="btn f-tdn f-alpha"><i></i></span>
+			</div>
+			<span class="time"><em>00:00</em> / <b>00:00</b></span>
+		</div>
+		<!-- Sound adjustment & playback method -->
+		<div class="vol-box">
+			<div class="m-vol">
+				<div class="barbg"></div>
+				<div class="vbg j-t">
+					<div class="curr" style="height: 46.5px;"></div>
+					<span class="btn f-alpha j-t" style="top: 40.5px;"></span>
+				</div>
+			</div>
+			<a id="vol" href="javascript:;" hidefocus="true" data-action="volume" class="icn icn-vol"></a>
+			<a href="javascript:;" hidefocus="true" data-action="mode" id="mode" class="icn icn-list" title="List loop"></a>
+			<a href="javascript:;" data-action="add" class="icn icn-add j-flag" title="Add to playlist"></a>
+			<div class="heart" rel="unlike" title="Favorite song"></div>
+		</div>
+		<!-- Sound adjustment & playback method end -->
+		
+		<a href="javascript:;" hidefocus="true" data-action="prev" class="pre" title="上一首"></a>
+		<div class="album-cover">
+			<img src="src/imgs/default_album.jpg">
+		</div>
+		<a href="javascript:;" hidefocus="true" data-action="next" class="nxt" title="下一首"></a>
+
+		<!-- Song display -->
+		<div class="mus-box">
+			<h3 class="mus-name">FM</h3>
+			<span>&nbsp;——&nbsp;</span>
+			<h3 class="mus-singer">Wake up your ears</h3>
+		</div>
+		<!-- Song display end -->
+
+		<!-- <div class="ctrl f-fl f-pr j-flag">
+			<a href="javascript:;" hidefocus="true" data-action="mode" class="icn icn-loop" title="cycle"></a>
+			<span class="add f-pr">
+			<span class="tip" style="display:none;">Added to playlist</span>
+			<a href="javascript:;" title="playlist" hidefocus="true" data-action="panel" class="icn icn-list s-fc3">2</a>
+			</span>
+			<div class="tip tip-1" style="display:none;">cycle</div>
+		</div> -->
+	</div>
+
+	<audio id="Audio"></audio>
+	<!-- The bottom playback panel ends -->
+
+
+
+	<!-- log in Register and  Mask start -->
+	<div id="signin" class="rl-modal" aria-hidden="false">
+	    <div class="rl-modal-header">  
+	      <button type="button" class="rl-close iconfont " data-dismiss="modal" hidefocus="true" aria-hidden="true">&#xe635;</button>
+	    </div>
+	    <div id="login" class="rl-modal-body clrfix animate from">
+	    	<h1 class="clrfix">
+	    		<span class="active-title">log in</span>
+	      	</h1>
+		  	<div class="l-left-wrap l">
+	  			<p class="rlf-tip-globle " id="signin-globle-error"></p>
+
+	  			<div class="rlf-group">
+	  				<input type="text" value="" id="js-name" minlength="6" maxlength="20" autocomplete="off" class="ipt ipt-email js-own-name" required/>
+	  				<label for="doc-vld-name-2">please enter user name</label>
+	  				<p class="rlf-tip-wrap" id="js-login-name"></p>
+	  			</div>
+
+	  			<div class="rlf-group proclaim-loc js-proclaim-on ">
+	  				<input type="password" name="password" data-validate="password" class="ipt ipt-pwd js-pass-pwd"  maxlength="16"  id="js-password" autocomplete="off">
+	  				<label>6-16 Bit password, case sensitive, no spaces</label>
+	  		        <p class="rlf-tip-wrap" id="js-login-password"></p>
+	  			</div>
+	  			<div class="rlf-group clrfix">
+	  				<button id="signin-btn" class="btn-red btn-full">log in</button>
+	  			</div>
+		  	</div>
+		  	<p class="change_link r" >Don't have an account yet?<a href="javascript:;" class='reg'>registered</a></p>
+	    </div>
+	  	
+	  	<div id="register" class="rl-modal-body clrfix animate from" width="500px" height="500px" >
+	  		<h1 class="clrfix">
+		  		<span class="active-title">registered</span>
+	      	</h1>
+		  	<div class="l-left-wrap l">
+		  			<p class="rlf-tip-globle " id="register-globle-error"></p>
+
+		  			<div class="rlf-group">
+		  				<input type="text" value="" name="email" data-validate="email" autocomplete="off" class="ipt ipt-email" id="username">
+		  				<label for="name">please enter user name</label>
+		  				<p class="rlf-tip-wrap" id="js-username"></p>
+		  			</div>
+
+		  			<div class="rlf-group proclaim-loc js-proclaim-on ">
+		  				<input type="password" name="password" class="ipt ipt-pwd"  maxlength="16" id="pwd" autocomplete="off">
+		  				<label>6-16 Bit password, case sensitive, no spaces</label>
+		  		        <p class="rlf-tip-wrap" id="js-reg-password"></p>
+		  			</div>
+
+		  			<div class="rlf-group proclaim-loc js-proclaim-on ">
+		  				<input type="password" name="password" class="ipt ipt-pwd"  id="pwdconfirm" maxlength="16"  autocomplete="off">
+		  				<label>Confirm password again</label>
+		  		        <p class="rlf-tip-wrap" id="js-reg-confirm"></p>
+		  			</div>
+		  		
+		  			<div class="rlf-group clrfix">
+		  				<button id="register-btn" class="btn-red btn-full">registered</button>
+		  			</div>
+		  	</div>
+		  	<p class="change_link r">Already have an account?<a href="javascript:;" class='log'>log in</a></p>
+	  	</div>
+	</div>
+	<div class="modal-backdrop modal-backdropss"></div>
+	<!-- Login, register and mask end -->
+
+	<!-- Success and failure tips -->
+	<div class="ok icon iconfont">&#xebd6;</div>
+	<div class="error icon iconfont">&#xebd8;</div>
+
+	<!-- <script>
+		var iWidth = document.documentElement.clientWidth;
+	 	document.getElementsByTagName("html")[0].style.fontSize = iWidth /16 +"px";
+	</script>-->
+
+	<script src="src/js/jquery-1.11.2.min.js"></script>
+	<script src="src/js/sea.js"></script>
+	<script>seajs.use('main.js');</script>
+</body>
+</html>
